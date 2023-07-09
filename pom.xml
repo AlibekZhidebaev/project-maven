@@ -47,6 +47,14 @@
     </dependencies>
 
     <build>
+
+        <resources>
+            <resource>
+                <directory>${project.build.directory}\dependency</directory>
+                <targetPath>lib\</targetPath>
+            </resource>
+
+        </resources>
         <plugins>
 
             <!-- Usual compilation -->
@@ -84,7 +92,24 @@
             </plugin>
 
             <!-- ///////////////////////////////////////////////////////////////////////////////// -->
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}\dependency</outputDirectory>
+                            <includeScope>compile</includeScope>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <!-- ///////////////////////////////////////////////////////////////////////////////// -->
 
             <!-- плагин, который соберет все зависимости и сложит в какую-то директорию при сборке -->
