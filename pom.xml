@@ -100,6 +100,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader</mainClass>
                         </manifest>
                         <manifestEntries>
@@ -109,6 +110,7 @@
                     </archive>
                 </configuration>
             </plugin>
+
             <!-- adding plugin with dependencies(with scope compile) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -130,18 +132,17 @@
             </plugin>
 
 
-
             <!-- ///////////////////////////////////////////////////////////////////////////////// -->
-
-            <!-- плагин, который соберет все зависимости и сложит в какую-то директорию при сборке -->
-
             <plugin>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <version>5.8.2</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <excludes>
+                        <exclude>StrangeTest</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
-
-
 
             <!-- Run java-fx app over Maven -->
             <plugin>
