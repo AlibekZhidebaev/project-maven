@@ -91,7 +91,25 @@
                 </executions>
             </plugin>
 
-            <!-- ///////////////////////////////////////////////////////////////////////////////// -->
+            <!-- maven-jar-plugin with file containing the game code and dependencies -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>./</Class-Path>
+                            <Rsrc-Main-Class>com.javarush.games.racer.RacerGame</Rsrc-Main-Class>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!-- adding plugin with dependencies(with scope compile) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -110,6 +128,9 @@
                     </execution>
                 </executions>
             </plugin>
+
+
+
             <!-- ///////////////////////////////////////////////////////////////////////////////// -->
 
             <!-- плагин, который соберет все зависимости и сложит в какую-то директорию при сборке -->
