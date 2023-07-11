@@ -142,7 +142,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Плагин запуска java-fx  -->
+            <!-- Плагин запуска java-fx оболочки -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
